@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+    db:
+        hostname: race_db
+        container_name: race_db
+        image: mariadb
+        ports:
+            - "3306:3306"
+        networks:
+            - race_network
+        environment:
+            MYSQL_ROOT_PASSWORD: qwerty
+            MYSQL_PASSWORD: qwerty
+            MYSQL_USER: db_user
+            MYSQL_DATABASE: db_db
+
+    nginx:
+        hostname: race_nginx
+        container_name: race_nginx
+        image: nginx
+        ports:
+            - "8080:80"
+            - "4433:443"
+        networks:
+            - race_network
+        volumes:
+            - ./:/var/www/race/
+            - ./docker/conf.d/:/etc/nginx/conf.d/
+
+    app:
+        image: race
+        hostname: app
+        container_name: race
+        volumes:
+            - .:/var/www/race
+        working_dir: /var/www/race
+        ports:
+            - "9000:9000"
+        networks:
+            - race_network
+        env_file:
+            - .env
+        environment:
+            VIRTUAL_HOST: race.local
+            DB_HOST: race_db
+            DB_PASSWORD: qwerty
+            DB_USERNAME: db_user
+            DB_DATABASE: db_db
+
+
+networks:
+    race_network:
+        driver: bridge
+
