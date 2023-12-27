@@ -34,6 +34,7 @@
         const xValues = [
             @php
                 {{
+                    date_default_timezone_set('Europe/Riga');
                     $dates = [];
                     foreach ($dataPoints as $dataPoint) {
                         if ($dataPoint->player->name == 'Geks') {
