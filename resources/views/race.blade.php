@@ -37,7 +37,7 @@
                     $dates = [];
                     foreach ($dataPoints as $dataPoint) {
                         if ($dataPoint->player->name == 'Geks') {
-                            echo '"' . $dataPoint->created_at->toDateTimeString() . '",';
+                            echo '"' . $dataPoint->created_at->toDateString() . '",';
                         }
                     }
                 }}
@@ -99,7 +99,16 @@
                 }]
             },
             options: {
-                legend: {display: true}
+                legend: {display: true},
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 90,
+                            minRotation: 90
+                        }
+                    }]
+                }
             }
         });
     </script>

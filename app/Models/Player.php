@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     use HasFactory;
+
+    public function dataPoints()
+    {
+        return $this->hasMany(DataPoint::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }
