@@ -86,6 +86,22 @@
                             {{
                                 $dates = [];
                                 foreach ($dataPoints as $dataPoint) {
+                                    if ($dataPoint->player->name == 'Gembird') {
+                                        echo $dataPoint->count . ',';
+                                    }
+                                }
+                            }}
+                        @endphp
+                    ],
+                    borderColor: "blue",
+                    fill: false,
+                    label: 'Gembird',
+                },{
+                    data: [
+                        @php
+                            {{
+                                $dates = [];
+                                foreach ($dataPoints as $dataPoint) {
                                     if ($dataPoint->player->name == 'Lv Camo') {
                                         echo 1150 . ',';
                                     }

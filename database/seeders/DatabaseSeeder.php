@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Lv Camo',
                 'url' => 'https://api.collectionlog.net/collectionlog/user/Lv%20Camo',
+            ],
+            [
+                'name' => 'Gembird',
+                'url' => 'https://api.collectionlog.net/collectionlog/user/Gembird',
             ]
         ];
 
